@@ -2,8 +2,8 @@
 # First param ─┌
 [username]
 format = " [╭─$user]($style)@"
-style_user = "bold red"
-style_root = "bold red"
+style_user = "bold blue"
+style_root = "bold blue"
 show_always = true
 
 # Second param
@@ -32,6 +32,7 @@ deleted = "x"
 # Last param in the first line/row
 [cmd_duration]
 min_time = 1
+style = "green"
 format = "took [$duration]($style)"
 disabled = false
 
@@ -68,15 +69,15 @@ disabled = true
 
 # Prompt: param 2 └─
 [character]
-success_symbol = " [╰─λ](bold red)"
-error_symbol = " [×](bold red)"
+success_symbol = " [╰─](bold green)"
+error_symbol = " [╰─×](bold red)"
 
 # SYMBOLS
-[status]
-symbol = "🔴"
-format = '[\[$symbol$status_common_meaning$status_signal_name$status_maybe_int\]]($style)'
-map_symbol = true
-disabled = false
+#[status]
+#symbol = "🔴"
+#format = '[\[$symbol$status_common_meaning$status_signal_name$status_maybe_int\]]($style)'
+#map_symbol = true
+#disabled = false
 
 [aws]
 symbol = "  "
