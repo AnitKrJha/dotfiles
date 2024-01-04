@@ -1,3 +1,11 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -100,9 +108,52 @@ source $ZSH/oh-my-zsh.sh
 alias zconfig="code ~/.zshrc"
 alias starconfig="code ~/.config/starship.toml"
 alias ls="lsd"
+alias open="xdg-open"
 alias ll="lsd -l"
+alias cd="cdi"
+
+
+# compile and run files
+
+run() {
+    if [[ -z "$1" ]]; then
+        echo "Please provide a file as an argument."
+        return 1
+    fi
+
+    filename="$1"
+    extension="${filename##*.}"
+
+    case "$extension" in
+        cpp | c)
+            output="${filename%.*}"
+            g++ -o "$output" "$filename" && "./$output"
+            ;;
+        js)
+            node "$filename"
+            ;;
+        py)
+            python "$filename"
+            ;;
+        *)
+            echo "Unsupported file type: $extension"
+            return 1
+            ;;
+    esac
+}
+
+
+
+
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 # fnm
-export PATH="/home/anit/.local/share/fnm:$PATH"
-eeval "$(fnm env --use-on-cd)"
+# export PATH="/home/anit/.local/share/fnm:$PATH"
+# eeval "$(fnm env --use-on-cd)"source ~/powerlevel10k/powerlevel10k.zsh-theme
+eval "$(zoxide init zsh --cmd cd)"
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
