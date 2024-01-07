@@ -2,9 +2,7 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -145,15 +143,9 @@ run() {
 
 
 
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# eval "$(starship init zsh)"
-# fnm
-# export PATH="/home/anit/.local/share/fnm:$PATH"
-# eeval "$(fnm env --use-on-cd)"source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+
 eval "$(zoxide init zsh --cmd cd)"
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
